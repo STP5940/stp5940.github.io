@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebDev Studio | สร้างเว็บไซต์ระดับพรีเมียม</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="style.css" rel="stylesheet">
+  <link href="animation.css" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- ใช้ Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+
+<body class="antialiased text-gray-800">
+
+  <!-- Animated Background -->
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 opacity-70"></div>
+    <div class="absolute inset-0 bg-[url('images/photo-bg.png')] opacity-10"></div>
+  </div>
+
+  <!-- แก้ไข Navbar เป็นดังนี้ -->
+  <nav class="fixed w-full glass-effect shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
+          <ion-icon name="code-slash" class="text-white text-lg"></ion-icon>
+        </div>
+        <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">WebDev Studio</span>
+      </div>
+
+      <!-- เมนูสำหรับ Desktop -->
+      <!-- <div class="hidden md:flex items-center space-x-8">
+        <a href="#about" class="text-gray-600 hover:text-indigo-600 transition-colors font-medium">เกี่ยวกับเรา</a>
+        <a href="#services" class="text-gray-600 hover:text-indigo-600 transition-colors font-medium">บริการ</a>
+        <a href="#portfolio" class="text-gray-600 hover:text-indigo-600 transition-colors font-medium">ผลงาน</a>
+        <a href="#pricing" class="text-gray-600 hover:text-indigo-600 transition-colors font-medium">ราคา</a>
+        <a href="#contact" class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-5 py-2 rounded-full hover:shadow-lg transition-all">ติดต่อเรา</a>
+      </div> -->
+      <div class="hidden lg:flex items-center space-x-8">
+        <!-- เมนู "เกี่ยวกับเรา" พร้อมไอคอน -->
+        <a href="#about" class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          เกี่ยวกับเรา
+        </a>
+
+        <!-- เมนู "บริการ" พร้อมไอคอน -->
+        <a href="#services" class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          บริการ
+        </a>
+
+        <!-- เมนู "ผลงาน" พร้อมไอคอน -->
+        <a href="#portfolio" class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          ผลงาน
+        </a>
+
+        <!-- เมนู "ราคา" พร้อมไอคอน -->
+        <a href="#pricing" class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          ราคา
+        </a>
+
+        <!-- ปุ่ม "ติดต่อเรา" พร้อมไอคอน -->
+        <a href="#contact" class="flex items-center bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-5 py-2 rounded-full hover:shadow-lg transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          ติดต่อเรา
+        </a>
+      </div>
+
+      <!-- ปุ่ม Mobile Menu -->
+      <button id="mobileMenuButton" class="lg:hidden text-gray-600 focus:outline-none">
+        <!-- <ion-icon name="menu" class="text-2xl"></ion-icon> -->
+        <!-- Icon สำหรับเปิดเมนู -->
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <!-- Icon สำหรับปิดเมนู -->
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 hidden">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu (ซ่อนไว้ตอนแรก) -->
+    <div id="mobileMenu" class="lg:hidden hidden bg-white w-full absolute left-0 top-full shadow-lg transition-all duration-300 ease-in-out">
+      <div class="px-5 py-3 space-y-4">
+        <a href="#about" class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          เกี่ยวกับเรา
+        </a>
+        <a href="#services" class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          บริการ
+        </a>
+        <a href="#portfolio" class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          ผลงาน
+        </a>
+        <a href="#pricing" class="flex items-center text-gray-600 hover:text-indigo-600 transition-colors font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          ราคา
+        </a>
+        <a href="#contact" class="flex items-center text-indigo-600 hover:text-indigo-600 transition-colors font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          ติดต่อเรา
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-20 md:pt-32 pb-20 px-5">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div class="text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          <!-- <span class="gradient-text">เปลี่ยนไอเดีย</span><br>
+          ให้กลายเป็นเว็บไซต์ที่สมบูรณ์แบบ -->
+          <span class="gradient-text">เปลี่ยนไอเดีย</span><br>
+          <span>ให้กลายเป็นธุรกิจ</span>
+          <!-- ให้สมารถจับต้องได้จริง -->
+        </h1>
+        <!-- <p class="text-lg text-gray-600">เราเป็นนักพัฒนาเว็บไซต์ที่รวมความสร้างสรรค์ และเทคโนโลยีเข้าด้วยกัน</p> -->
+        <!-- <p class="text-lg text-gray-600 mb-8">เพื่อสร้างสรรค์ผลงาน ให้ตอบโจทย์สำหรับธุรกิจของคุณ</p> -->
+
+        <!-- <div class="mb-8">
+          <span id="typewriter" class="text-lg text-gray-600"></span>
+          ใช้ span แทน p เพื่อให้เคอร์เซอร์อยู่ในบรรทัดเดียวกันพอดี
+        </div> -->
+
+        <div class="mb-8 min-h-[3.5rem]">
+          <span id="typewriter" class="text-lg text-gray-600"></span>
+        </div>
+
+        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+          <a href="#contact" class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all font-medium">เริ่มโครงการ</a>
+          <a href="#portfolio" class="border border-gray-300 text-gray-700 px-8 py-3 rounded-full hover:bg-gray-50 transition-all font-medium">ดูผลงาน</a>
+        </div>
+      </div>
+
+      <div class="swiper bg-white slideSwiper relative rounded-xl overflow-hidden">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="images/001.jpg" alt="ตัวอย่างเว็บไซต์ 1" class="w-full h-auto transition-transform duration-700 hover:scale-105" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/004.jpg" alt="ตัวอย่างเว็บไซต์ 1" class="w-full h-auto transition-transform duration-700 hover:scale-105" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/002.jpg" alt="ตัวอย่างเว็บไซต์ 3" class="w-full h-auto transition-transform duration-700 hover:scale-105" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/003.jpg" alt="ตัวอย่างเว็บไซต์ 2" class="w-full h-auto transition-transform duration-700 hover:scale-105" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/005.jpg" alt="ตัวอย่างเว็บไซต์ 2" class="w-full h-auto transition-transform duration-700 hover:scale-105" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/007.jpg" alt="ตัวอย่างเว็บไซต์ 2" class="w-full h-auto transition-transform duration-700 hover:scale-105" />
+          </div>
+          <div class="swiper-slide">
+            <img src="images/deploy-nginx-pm2-nodejs.png" alt="ตัวอย่างเว็บไซต์ 1" class="w-full h-auto transition-transform duration-700 hover:scale-105" />
+          </div>
+        </div>
+        <div class="swiper-pagination mt-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="py-12 bg-white/50 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-5">
+
+      <div class="text-center mb-16">
+        <!-- ป้ายหัวข้อ -->
+        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium mb-4">เทคโนโลยีที่เราใช้งาน</span>
+
+        <!-- หัวข้อหลัก -->
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">เทคโนโลยีล้ำสมัยสำหรับธุรกิจยุคดิจิทัล</h2>
+
+        <!-- รายละเอียดเทคโนโลยี -->
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 text-left">
+          <!-- คอลัมน์ซ้าย -->
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-indigo-50 p-2 rounded-lg mr-4">
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Frontend Development</h3>
+                <p class="text-gray-600 text-sm">Nuxt.js, React, Tailwind, Bootstrap</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="bg-indigo-50 p-2 rounded-lg mr-4">
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Backend Systems</h3>
+                <p class="text-gray-600 text-sm">Node.js, Php, Bun, Python, Vb.net</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- คอลัมน์ขวา -->
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-indigo-50 p-2 rounded-lg mr-4">
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Cloud Services</h3>
+                <p class="text-gray-600 text-sm">Digital Ocean, Cloudflare, Docker</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="bg-indigo-50 p-2 rounded-lg mr-4">
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-800">Database</h3>
+                <p class="text-gray-600 text-sm">MSSQL, MySQL, PostgreSQL, Redis</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 sm:grid-cols-7 gap-8 items-center justify-center">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg" alt="Nuxt.js" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js" class="h-20 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" alt="Jquery" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="Css3" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="Javascript" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="npm" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bun/bun-original.svg" alt="Bun" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="Php" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/composer/composer-original.svg" alt="Composer" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualbasic/visualbasic-original.svg" alt="Visualbasic" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="Mssql" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="Mysql" class="h-20 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" alt="Express" class="h-20 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original-wordmark.svg" alt="Prisma" class="h-20 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="Nginx" class="h-20 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Github" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg" alt="Cloudflare" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" alt="Digitalocean" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows8" class="h-12 mx-auto opacity-70 hover:opacity-100 transition-opacity">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium mb-4">เกี่ยวกับเรา</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">ทีมงานมืออาชีพที่เข้าใจธุรกิจของคุณ</h2>
+        <p class="max-w-2xl mx-auto text-gray-600">เราคือทีมนักพัฒนาเว็บไซต์และนักออกแบบประสบการณ์ผู้ใช้ที่มุ่งมั่นสร้างผลงานที่มีคุณภาพสูง</p>
+        <p class="max-w-2xl mx-auto text-gray-600">พร้อมนำเทคโนโลยีล่าสุดมาใช้ในการทำงาน</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow hover-scale">
+          <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+            <ion-icon name="sparkles" class="text-indigo-600 text-2xl"></ion-icon>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">การออกแบบที่โดดเด่น</h3>
+          <p class="text-gray-600">เราใส่ใจในทุกรายละเอียดของการออกแบบ เพื่อสร้างประสบการณ์ผู้ใช้ที่ลื่นไหลและน่าประทับใจ</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow hover-scale">
+          <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+            <ion-icon name="code" class="text-purple-600 text-2xl"></ion-icon>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">เทคโนโลยีล่าสุด</h3>
+          <p class="text-gray-600">เราใช้เทคโนโลยีและเฟรมเวิร์คที่ทันสมัย เพื่อให้เว็บไซต์ของคุณมีประสิทธิภาพสูงสุด</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow hover-scale">
+          <div class="w-14 h-14 bg-pink-100 rounded-lg flex items-center justify-center mb-6">
+            <ion-icon name="headset" class="text-pink-600 text-2xl"></ion-icon>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">การสนับสนุนที่ครบวงจร</h3>
+          <p class="text-gray-600">เราให้การสนับสนุนหลังการขายอย่างเต็มที่ พร้อมให้คำปรึกษาและแก้ไขปัญหาโดยทีมงานมืออาชีพ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50 px-5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium mb-4">บริการของเรา</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">เราสร้างทุกอย่างบนเว็บ</h2>
+        <p class="max-w-2xl mx-auto text-gray-600">จากเว็บไซต์องค์กรไปจนถึงแอปพลิเคชันที่ซับซ้อน เราพร้อมตอบสนองทุกความต้องการของคุณ</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+            <ion-icon name="globe" class="text-indigo-600 text-xl"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">เว็บไซต์องค์กร</h3>
+          <p class="text-gray-600 text-sm">สร้างภาพลักษณ์ที่แข็งแกร่งให้กับธุรกิจของคุณด้วยเว็บไซต์องค์กรระดับมืออาชีพ</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <ion-icon name="cart" class="text-purple-600 text-xl"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">ร้านค้าออนไลน์</h3>
+          <p class="text-gray-600 text-sm">ระบบขายสินค้าออนไลน์ครบวงจร พร้อมช่องทางการชำระเงินที่หลากหลาย</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
+            <ion-icon name="phone-portrait" class="text-pink-600 text-xl"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">เว็บแอปพลิเคชัน</h3>
+          <p class="text-gray-600 text-sm">แอปพลิเคชันบนเว็บที่ทำงานได้เหมือนแอปบนมือถือ รองรับทุกอุปกรณ์</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <ion-icon name="search" class="text-blue-600 text-xl"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">SEO Optimized</h3>
+          <p class="text-gray-600 text-sm">ออกแบบเว็บไซต์ให้ติดอันดับการค้นหาบน Google เพื่อเพิ่มโอกาสทางธุรกิจ</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <ion-icon name="shield-checkmark" class="text-green-600 text-xl"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">ความปลอดภัย</h3>
+          <p class="text-gray-600 text-sm">ระบบรักษาความปลอดภัยระดับสูง ป้องกันข้อมูลและความเป็นส่วนตัวของผู้ใช้</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+            <ion-icon name="settings" class="text-yellow-600 text-xl"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">ระบบหลังบ้าน</h3>
+          <p class="text-gray-600 text-sm">ระบบจัดการเนื้อหาและข้อมูลที่ใช้งานง่าย พร้อมรายงานผลการดำเนินงาน</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-20 px-5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium mb-4">ผลงานของเรา</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">โครงการล่าสุดของเรา</h2>
+        <p class="max-w-2xl mx-auto text-gray-600">ตัวอย่างผลงานที่เราได้สร้างให้กับลูกค้าทั้งในและต่างประเทศ</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <img src="images/002.jpg" alt="Portfolio 1" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+            <div>
+              <h3 class="text-white font-bold text-xl mb-1">ระบบสืบค้นเว็บไซต์ภายในบริษัท</h3>
+              <p class="text-indigo-200 text-sm">ออกแบบ UI/UX • พัฒนาระบบค้นหาข้อมูลภายใน</p>
+            </div>
+          </div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <img src="images/008.jpg" alt="Portfolio 2" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+            <div>
+              <h3 class="text-white font-bold text-xl mb-1">ระบบค้นหาร้านอาหารออนไลน์</h3>
+              <p class="text-indigo-200 text-sm">ออกแบบและพัฒนา • ระบบจองคูปองแลกสินค้า</p>
+            </div>
+          </div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <img src="images/010.png" alt="Portfolio 3" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+            <div>
+              <h3 class="text-white font-bold text-xl mb-1">ระบบงานภายในองค์กร</h3>
+              <p class="text-indigo-200 text-sm">ออกแบบและพัฒนา • ระบบจัดการงานซ่อมบำรุงเครื่องจักร</p>
+            </div>
+          </div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <img src="images/009.png" alt="Portfolio 3" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+            <div>
+              <h3 class="text-white font-bold text-xl mb-1">ระบบตรวจสอบบัญชี</h3>
+              <p class="text-indigo-200 text-sm">ออกแบบและพัฒนา • ระบบจัดการงานตรวจสอบบัญชี</p>
+            </div>
+          </div>
+        </div>
+        <div class="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all hover-scale">
+          <img src="images/006.jpg" alt="Portfolio 3" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+            <div>
+              <h3 class="text-white font-bold text-xl mb-1">ระบบจัดการจองคิว</h3>
+              <p class="text-indigo-200 text-sm">ออกแบบและพัฒนา • จองคิวห้องซ้อมดนตรีออนไลน์</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800">
+          ดูผลงานทั้งหมด
+          <ion-icon name="arrow-forward" class="ml-2"></ion-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 px-5">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium mb-4">แพ็กเกจราคา</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">เลือกแพ็กเกจที่เหมาะกับคุณ</h2>
+        <p class="max-w-2xl mx-auto text-gray-600">เราเสนอราคาที่แข่งขันได้ พร้อมคุณภาพในการบริการ</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all hover-scale grid grid-rows-[auto_auto_1fr_auto] h-full">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">สตาร์ทเตอร์</h3>
+          <div class="mb-6">
+            <span class="text-4xl font-bold text-gray-900">15,000</span>
+            <span class="text-gray-600">บาท</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">เว็บไซต์ 5 หน้า</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">ออกแบบ Responsive</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">ระบบ CMS พื้นฐาน</span>
+            </li>
+            <li class="flex items-center text-gray-400">
+              <ion-icon name="close-circle" class="mr-2"></ion-icon>
+              <span>ระบบสมาชิก</span>
+            </li>
+            <li class="flex items-center text-gray-400">
+              <ion-icon name="close-circle" class="mr-2"></ion-icon>
+              <span>ระบบแจ้งชำระเงินออนไลน์</span>
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-gray-100 text-gray-800 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors">ติดต่อเรา</a>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-lg border-2 border-indigo-500 relative hover-scale grid grid-rows-[auto_auto_1fr_auto] h-full">
+          <div class="absolute top-0 right-0 bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">แนะนำ</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">ธุรกิจ</h3>
+          <div class="mb-6">
+            <span class="text-4xl font-bold text-gray-900">35,000</span>
+            <span class="text-gray-600">บาท</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">เว็บไซต์ 10 หน้า</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">ออกแบบ Custom UI/UX</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">ระบบ CMS ขั้นสูง</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">ระบบสมาชิก</span>
+            </li>
+            <li class="flex items-center text-gray-400">
+              <ion-icon name="close-circle" class="mr-2"></ion-icon>
+              <span>ระบบแจ้งชำระเงินออนไลน์</span>
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-md transition-all">ติดต่อเรา</a>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all hover-scale grid grid-rows-[auto_auto_1fr_auto] h-full">
+          <div class="flex justify-between items-start mb-0">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">พรีเมียม VIP</h3>
+            <span class="inline-block bg-yellow-400 text-gray-900 px-2 py-1 rounded text-xs font-bold">EXCLUSIVE</span>
+          </div>
+
+          <div class="mb-2">
+            <span class="text-4xl font-bold text-gray-900">75,000+</span>
+            <span class="text-gray-600">บาท</span>
+            <p class="text-sm text-gray-400 mt-0">ราคาขึ้นอยู่กับความต้องการเฉพาะ</p>
+          </div>
+
+          <div class="mb-2">
+            <!-- ส่วนราคาพร้อมส่วนลด -->
+            <div class="flex items-end gap-2">
+              <!-- ราคาเดิมพร้อมขีดฆ่า -->
+              <span class="text-2xl text-gray-300 line-through">100,000</span>
+
+              <!-- ป้ายส่วนลด -->
+              <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md ml-2 mb-1">
+                <span class="inline-block animate-fire">🔥&nbsp;</span>
+                ลด 25%
+              </span>
+            </div>
+          </div>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">เว็บไซต์ไม่จำกัดหน้า</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">ออกแบบ Custom พรีเมียม</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">ระบบหลังบ้านแบบ Custom</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">ระบบสมาชิกขั้นสูง</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">ระบบแจ้งชำระเงินออนไลน์</span>
+            </li>
+            <li class="flex items-center">
+              <ion-icon name="checkmark-circle" class="text-green-500 mr-2"></ion-icon>
+              <span class="text-gray-600">บริการซัพพอร์ตการใช้งาน 1 ปี</span>
+            </li>
+          </ul>
+          <a href="#contact" class="block text-center bg-gray-100 text-gray-800 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors">สอบถามแพ็กเกจพิเศษ</a>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="text-gray-600 mb-4">ต้องการโซลูชันเฉพาะสำหรับธุรกิจของคุณ?</p>
+        <a href="https://m.me/home.htmI" target="_blank" class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-md transition-all">
+          <ion-icon name="chatbubbles" class="mr-2"></ion-icon>
+          สนทนากับผู้เชี่ยวชาญของเรา
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="pt-20 px-5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium mb-4">ความประทับใจจากลูกค้า</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">ลูกค้าพูดถึงเราอย่างไร</h2>
+      </div>
+      <div class="bg-white p-8 rounded-xl shadow-sm">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold mr-4">ก</div>
+          <div>
+            <h4 class="font-bold text-gray-900">คุณรัตน์</h4>
+            <p class="text-gray-500 text-sm">บริษัท ไทย ******* จำกัด</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-6">ให้บริการอย่างมืออาชีพ พัฒนาเว็บไซต์ได้ตรงตามความต้องการและเสร็จทันเวลา การสื่อสารดีมาก</p>
+        <div class="flex space-x-1">
+          <ion-icon name="star" class="text-yellow-400"></ion-icon>
+          <ion-icon name="star" class="text-yellow-400"></ion-icon>
+          <ion-icon name="star" class="text-yellow-400"></ion-icon>
+          <ion-icon name="star" class="text-yellow-400"></ion-icon>
+          <ion-icon name="star" class="text-yellow-400"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="pt-16 px-5">
+    <div class="max-w-7xl mx-auto bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">พร้อมเริ่มโครงการของคุณแล้วหรือยัง?</h2>
+      <p class="text-indigo-100 mb-6 max-w-2xl mx-auto">ติดต่อเราเพื่อพูดคุยเกี่ยวกับความต้องการของคุณ และเราจะช่วยทำให้เป็นจริง</p>
+      <a href="#contact" class="inline-block bg-white text-indigo-600 px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">เริ่มต้นโครงการ</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <!-- <section id="contact" class="py-20 px-5">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">ติดต่อเรา</h2>
+        <p class="text-gray-600 mb-8">หากมีคำถามหรือต้องการปรึกษาเกี่ยวกับโครงการของคุณ? โปรดติดต่อเรา</p>
+        <div class="space-y-4">
+          <div class="flex items-start">
+            <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+              <ion-icon name="mail" class="text-indigo-600"></ion-icon>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900">อีเมล</h4>
+              <p class="text-gray-600">sitthipong114@gmail.com</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+              <ion-icon name="call" class="text-purple-600"></ion-icon>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900">โทรศัพท์</h4>
+              <p class="text-gray-600">064-935-5175</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+              <ion-icon name="location" class="text-pink-600"></ion-icon>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900">ที่อยู่</h4>
+              <p class="text-gray-600">ติดต่องานพัฒนาซอฟต์แวร์ ออนไลน์ (ทั่วราชอาณาจักร)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-8 rounded-xl shadow-sm">
+        <h3 class="text-xl font-bold text-gray-900 mb-6">ส่งข้อความถึงเรา</h3>
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">ชื่อของคุณ</label>
+            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">อีเมล</label>
+            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">โทรศัพท์</label>
+            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">ข้อความ</label>
+            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-md transition-all">ส่งข้อความ</button>
+        </form>
+      </div>
+    </div>
+  </section> -->
+
+  <section id="contact" class="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <!-- ปรับ max-width ให้แคบลงเพื่อความเหมาะสม -->
+      <div class="text-center mb-10">
+        <!-- จัดส่วนหัวให้อยู่กลาง -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">ติดต่อเรา</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">หากมีคำถามหรือต้องการปรึกษาเกี่ยวกับโครงการของคุณ? โปรดติดต่อเรา</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 md:gap-6">
+        <!-- แบ่งเป็น 3 คอลัมน์บนหน้าจอใหญ่ -->
+        <!-- อีเมล -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <ion-icon name="mail" class="text-indigo-600 text-xl"></ion-icon>
+          </div>
+          <h4 class="font-medium text-gray-900 text-center mb-2">อีเมล</h4>
+          <a href="mailto:sitthipong114@gmail.com" class="text-gray-600 hover:text-indigo-600 transition-colors text-center block">sitthipong114@gmail.com</a>
+        </div>
+
+        <!-- โทรศัพท์ -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <ion-icon name="call" class="text-purple-600 text-xl"></ion-icon>
+          </div>
+          <h4 class="font-medium text-gray-900 text-center mb-2">โทรศัพท์</h4>
+          <a href="tel:0649355175" class="text-gray-600 hover:text-purple-600 transition-colors text-center block">064-935-5175</a>
+        </div>
+
+        <!-- Line ID -->
+        <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <ion-icon name="chatbubble" class="text-green-600 text-xl"></ion-icon>
+          </div>
+          <h4 class="font-medium text-gray-900 text-center mb-2">Line ID</h4>
+          <p class="text-gray-600 text-center">@sitthipong114</p>
+          <div class="flex justify-center">
+            <a href="https://line.me/ti/p/~sitthipong114" target="_blank" class="inline-flex items-center justify-center mt-2 bg-green-500 hover:bg-green-600 text-white text-sm py-1 px-3 rounded-full inline-block transition-colors">
+              <ion-icon name="add" class="mr-2"></ion-icon>
+              เพิ่มเพื่อน
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-12 px-5">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center space-x-2 mb-4">
+          <div class="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
+            <ion-icon name="code-slash" class="text-white text-lg"></ion-icon>
+          </div>
+          <span class="text-xl font-bold text-white">WebDev Studio</span>
+        </div>
+        <p class="text-sm mb-4">เราเป็นนักพัฒนาเว็บไซต์ที่มุ่งมั่นสร้างผลงานที่มีคุณภาพ ด้วยเทคโนโลยีและความคิดสร้างสรรค์</p>
+        <div class="flex space-x-4">
+          <a href="https://www.facebook.com/home.htmI" class="text-gray-400 hover:text-white transition-colors">
+            <ion-icon name="logo-facebook" class="text-xl"></ion-icon>
+          </a>
+          <a href="https://www.instagram.com/sitthipong114" class="text-gray-400 hover:text-white transition-colors">
+            <ion-icon name="logo-instagram" class="text-xl"></ion-icon>
+          </a>
+          <a href="https://x.com/sitthipong114" class="text-gray-400 hover:text-white transition-colors">
+            <ion-icon name="logo-twitter" class="text-xl"></ion-icon>
+          </a>
+          <a href="https://www.youtube.com/@TIBasics" class="text-gray-400 hover:text-white transition-colors">
+            <ion-icon name="logo-youtube" class="text-xl"></ion-icon>
+          </a>
+          <a href="https://github.com/STP5940" class="text-gray-400 hover:text-white transition-colors">
+            <ion-icon name="logo-github" class="text-xl"></ion-icon>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-medium mb-4">บริการ</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-sm hover:text-white transition-colors">● เว็บไซต์องค์กร</a></li>
+          <li><a href="#" class="text-sm hover:text-white transition-colors">● เว็บแอปพลิเคชัน</a></li>
+          <li><a href="#" class="text-sm hover:text-white transition-colors">● โมบายแอปพลิเคชัน</a></li>
+          <li><a href="#" class="text-sm hover:text-white transition-colors">● วินโดว์แอปพลิเคชัน</a></li>
+          <li><a href="#" class="text-sm hover:text-white transition-colors">● บริการจัดทำอันดับ SEO</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-medium mb-4">ลิงก์ด่วน</h4>
+        <ul class="space-y-2">
+          <li><a href="#about" class="text-sm hover:text-white transition-colors">เกี่ยวกับเรา</a></li>
+          <li><a href="#portfolio" class="text-sm hover:text-white transition-colors">ผลงาน</a></li>
+          <li><a href="#pricing" class="text-sm hover:text-white transition-colors">ราคา</a></li>
+          <li><a href="#contact" class="text-sm hover:text-white transition-colors">ติดต่อ</a></li>
+          <li><a href="#" class="text-sm hover:text-white transition-colors">บล็อก</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-medium mb-4">ติดต่อเรา</h4>
+        <address class="not-italic text-sm space-y-2">
+          <p>โทร: 064-935-5175 (คุณเป้)</p>
+          <p>อีเมล: sitthipong114@gmail.com</p>
+        </address>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto pt-8 mt-8 border-t border-gray-800 text-center text-sm">
+      <p>&copy; 2025 WebDev Studio. สงวนลิขสิทธิ์ทุกประการ</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-indigo-600 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all">
+    <ion-icon name="arrow-up" class="text-xl"></ion-icon>
+  </button>
+
+  <script src="script.js" rel="stylesheet"></script>
+  <script>
+    new Typed('#typewriter', {
+      // strings: ["เราเป็นนักพัฒนาเว็บไซต์^500ที่รวมความสร้างสรรค์^500 และเทคโนโลยีเข้าด้วยกัน<br/> เพื่อสร้างสรรค์ผลงาน^500 ให้ตอบโจทย์สำหรับธุรกิจของคุณ"],
+      strings: ["รวมความสร้างสรรค์^500 และเทคโนโลยีเข้าด้วยกัน<br/> เพื่อสร้างผลงาน^500 ให้ตอบโจทย์ธุรกิจคุณ"],
+      typeSpeed: 30,
+      showCursor: true,
+      cursorChar: '<span class="inline-block animate-fire">&nbsp;🛸</span>', // กำหนดสัญลักษณ์เคอร์เซอร์
+    });
+  </script>
+</body>
+
+</html>

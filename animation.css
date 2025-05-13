@@ -1,0 +1,31 @@
+/* /animation.css */
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* เพิ่มความหลากหลายให้กับพาร์ทิเคิล */
+.particle-1 {
+  animation-duration: 10s;
+}
+
+.particle-2 {
+  animation-duration: 12s;
+}
+
+.particle-3 {
+  animation-duration: 9s;
+}
+
+/* เพิ่มเอฟเฟกต์ box-shadow เบาๆ เพื่อให้พาร์ทิเคิลมีมิติ */
+.glow {
+  box-shadow: 0 0 15px 5px rgba(99, 102, 241, 0.1);
+}

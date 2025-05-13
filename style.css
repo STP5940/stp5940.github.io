@@ -144,5 +144,5 @@ body {
   /* เพิ่มระยะห่างจากข้อความ */
   opacity: 0.7;
   /* ทำให้เคอร์เซอร์จางเล็กน้อย */
-  animation: none !important;
+  /* animation: none !important; */
 }

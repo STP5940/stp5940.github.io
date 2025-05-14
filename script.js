@@ -42,6 +42,7 @@ backToTopButton.addEventListener('click', () => {
     });
 });
 
+// Images slide
 const swiper = new Swiper('.slideSwiper', {
     loop: true,
     autoplay: {
@@ -54,3 +55,6 @@ const swiper = new Swiper('.slideSwiper', {
         clickable: true,
     },
 });
+
+// getCurrent year
+document.getElementById('currentYear').textContent = new Date().getFullYear();

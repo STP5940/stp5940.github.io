@@ -864,6 +864,11 @@
 
   <script src="script.js" rel="stylesheet"></script>
   <script>
+    // getCurrent year
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
+
     new Typed('#typewriter', {
       // strings: ["เราเป็นนักพัฒนาเว็บไซต์^500ที่รวมความสร้างสรรค์^500 และเทคโนโลยีเข้าด้วยกัน<br/> เพื่อสร้างสรรค์ผลงาน^500 ให้ตอบโจทย์สำหรับธุรกิจของคุณ"],
       strings: ["รวมความสร้างสรรค์^500 และเทคโนโลยีเข้าด้วยกัน<br/> เพื่อสร้างผลงาน^500 ให้ตอบโจทย์ธุรกิจคุณ"],

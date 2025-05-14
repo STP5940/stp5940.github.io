@@ -55,6 +55,3 @@ const swiper = new Swiper('.slideSwiper', {
         clickable: true,
     },
 });
-
-// getCurrent year
-document.getElementById('currentYear').textContent = new Date().getFullYear();

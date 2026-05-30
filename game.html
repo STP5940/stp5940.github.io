@@ -630,7 +630,7 @@
         // Audio Assets
         let bgMusic = new Audio('images/game/opengame.mp3');
         bgMusic.loop = true;
-        bgMusic.volume = 0.2;
+        bgMusic.volume = 0.05;
         
         let endMusic = new Audio('images/game/applause-cheer.mp3');
         endMusic.loop = true;
@@ -648,7 +648,7 @@
                 endMusic.volume = 0;
                 muteBtn.innerText = '🔇';
             } else {
-                bgMusic.volume = 0.2;
+                bgMusic.volume = 0.05;
                 endMusic.volume = 0.5;
                 muteBtn.innerText = '🔊';
             }
@@ -864,6 +864,19 @@
                 utterance.lang = 'en-US';
                 utterance.rate = 0.9;
                 utterance.volume = 1.0; // ตั้งค่าความดังสูงสุด
+                
+                // เก็บสถานะว่าตอนที่กดฟังคำศัพท์ เพลงอะไรเล่นอยู่บ้าง และสั่งหยุด
+                const wasBgPlaying = !bgMusic.paused;
+                const wasEndPlaying = !endMusic.paused;
+                bgMusic.pause();
+                endMusic.pause();
+
+                // เมื่อพูดจบ ให้กลับไปเล่นเพลงที่เล่นค้างไว้
+                utterance.onend = function() {
+                    if (wasBgPlaying && !isMuted) bgMusic.play().catch(e => console.log(e));
+                    if (wasEndPlaying && !isMuted) endMusic.play().catch(e => console.log(e));
+                };
+                
                 window.speechSynthesis.speak(utterance);
             }
         }

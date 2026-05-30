@@ -504,6 +504,11 @@
             .vocab-emoji { font-size: 1.5rem; }
             .vocab-word { font-size: 1rem; }
             button.btn-primary { font-size: 1.2rem; padding: 15px 30px; }
+            
+            .modal-content { padding: 25px 20px; }
+            .modal-content h2 { font-size: 2rem; }
+            .modal-content p { font-size: 1rem; margin-bottom: 15px; }
+            .score-highlight { font-size: 1.2rem !important; }
         }
     </style>
 </head>
@@ -988,7 +993,7 @@
                 document.getElementById('modal-title').innerText = "🎉 จบเกมแล้ว! 🎉";
                 document.getElementById('modal-title').className = "game-over";
                 document.getElementById('next-level-btn').innerText = "เล่นใหม่อีกครั้ง";
-                document.getElementById('modal-desc').innerHTML = `ยินดีด้วย! คุณเคลียร์ทั้ง ${levels.length} ด่านสำเร็จ<br><br>⏱️ เวลารวมทั้งหมด: <strong style="color: #4f46e5; font-size: 1.5rem;">${formatTime(totalSecondsElapsed)}</strong><br>⭐ คะแนนรวมทั้งหมด: <strong style="color: #10b981; font-size: 1.5rem;">${score}</strong>`;
+                document.getElementById('modal-desc').innerHTML = `ยินดีด้วย! คุณเคลียร์ทั้ง ${levels.length} ด่านสำเร็จ<br><br>⏱️ เวลารวมทั้งหมด: <strong class="score-highlight" style="color: #4f46e5; font-size: 1.5rem;">${formatTime(totalSecondsElapsed)}</strong><br>⭐ คะแนนรวมทั้งหมด: <strong class="score-highlight" style="color: #10b981; font-size: 1.5rem;">${score}</strong>`;
                 endMusic.play().catch(e => console.log('Audio playback prevented:', e));
             }
             

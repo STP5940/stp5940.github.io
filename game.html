@@ -495,9 +495,9 @@
             h1 { font-size: 2.2rem; }
             .start-container { padding: 40px 20px; }
             .game-board { gap: 8px; }
-            .card-back.emoji-card { font-size: 2.2rem; }
-            .card-back.text-card { font-size: 0.9rem; }
-            .card-front::after { font-size: 2rem; }
+            .card-back.emoji-card { font-size: 2.8rem; }
+            .card-back.text-card { font-size: 1.1rem; }
+            .card-front::after { font-size: 2.5rem; }
             .game-header { padding: 12px 20px; border-radius: 15px; }
             .stat-value { font-size: 1.5rem; }
             .vocab-item { padding: 8px 10px; }
@@ -790,13 +790,16 @@
             
             const levelConfig = levels[levelIndex - 1];
             let cols = levelConfig.cols;
-            if (window.innerWidth <= 600 && cols > 4) { cols = 4; }
+            // บนมือถือ จำกัดคอลัมน์สูงสุดที่ 3 เพื่อให้การ์ดใหญ่ขึ้น
+            if (window.innerWidth <= 600) { 
+                cols = cols > 3 ? 3 : cols; 
+            }
             
             gameBoard.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
             gameBoard.style.gridTemplateRows = `auto`;
             
             // ปรับความกว้างให้การ์ดไม่ใหญ่หรือเล็กเกินไป
-            let cardMaxWidth = window.innerWidth <= 600 ? 110 : 200;
+            let cardMaxWidth = window.innerWidth <= 600 ? 130 : 200;
             let gapSize = 15;
             let calculatedWidth = (cols * cardMaxWidth) + ((cols - 1) * gapSize);
             gameBoard.style.maxWidth = `${Math.min(calculatedWidth, 900)}px`;
